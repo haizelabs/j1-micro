@@ -1,0 +1,16 @@
+torch==2.5.1
+transformers==4.51.3
+accelerate==1.4.0
+bitsandbytes==0.45.3
+peft==0.14.0
+datasets==3.3.2
+numpy==1.26.4
+pandas==2.2.3
+tqdm==4.67.1
+pyyaml==6.0.2
+trl==0.15.2
+scikit-learn==1.6.1
+scipy==1.15.2
+vllm==0.7.2
+flash-attn==2.7.0.post2
+wandb==0.19.7
