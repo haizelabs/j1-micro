@@ -1,7 +1,7 @@
 import torch
 from config import Config
 from peft import LoraConfig
-from rewards import spct_format_reward_func, spct_argmax_reward_func
+from rewards import format_reward_func, argmax_reward_func
 from transformers import (
     AutoTokenizer,
     AutoModelForCausalLM,
@@ -9,8 +9,8 @@ from transformers import (
 from trl import GRPOConfig, GRPOTrainer
 from utils import get_skywork_dataset
 
-train_dataset = get_skywork_dataset(Config.TRAIN_INPUT_FILE)
-test_dataset = get_skywork_dataset(Config.TEST_INPUT_FILE)
+train_dataset = get_skywork_dataset(Config.TRAIN_INPUT_FILE, split="train")
+test_dataset = get_skywork_dataset(Config.TEST_INPUT_FILE, split="test")
 
 lora_config = LoraConfig(
     r=Config.LORA_RANK,
@@ -53,8 +53,8 @@ training_args = GRPOConfig(
     gradient_accumulation_steps=Config.GRAD_ACCUM,
     num_train_epochs=Config.EPOCHS,
     learning_rate=Config.LEARNING_RATE,
+    eval_strategy=Config.EVAL_STRATEGY,
     eval_steps=Config.EVAL_STEPS,
-    eval_strategy="steps",
     gradient_checkpointing=True,
     beta=0.0005,
     adam_beta1=0.9,
@@ -76,11 +76,11 @@ trainer = GRPOTrainer(
     model=model,
     processing_class=tokenizer,
     peft_config=lora_config,
-    reward_funcs=[spct_format_reward_func, spct_argmax_reward_func],
+    reward_funcs=[format_reward_func, argmax_reward_func],
     args=training_args,
     train_dataset=train_dataset,
     eval_dataset=test_dataset,
 )
 
 trainer.train()
-model.save_lora("spct-mini-lora")
+model.save_lora("j1-micro-lora")
