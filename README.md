@@ -1,5 +1,11 @@
 # Tiny But Mighty Reward (Judge) Models: `j1-micro` & `j1-nano`
 
+<br>
+<p align="center">
+<img src="assets/j1.png" width="400">
+</p>
+
+
 `j1-micro` and `j1-nano` are tiny but mighty reward models finetuned off Qwen3 via a variant of [Self-Principled Critique Tuning](https://arxiv.org/abs/2504.02495). This is one particular approach to [scaling judge-time compute](https://github.com/haizelabs/verdict) that factors the reward modeling task into two steps:
 
 1. Generate a set of query-specific principles (rubric) that can be used to evaluate a given sample
@@ -10,15 +16,11 @@ Our `j1` models are trained exclusively on the Skywork v2.0 dataset for the pair
 
 `j1-micro` and `j1-nano` were each trained in <1 day on a single A100 GPU. They are *only* 1.7B and 0.6B parameters, respectively.
 
-<br>
-<p align="center">
-<img src="assets/j1.png" width="400">
-</p>
-
 ## Results
 
 We report performance on RewardBench, the gold standard for measuring reward models.
 
+<div align="center">
 | Model | RewardBench Score |
 |-------|:-------------:|
 | Qwen3-1.7B | 29.51% |
@@ -28,6 +30,8 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 | GPT-4o-mini-2024-07-18 | 80.10% |
 | Llama-3-70B-Instruct | 77.00% |
 | **j1-micro** | **80.70%** |
+</div>
+<br>
 
 ### Training Progress
 <br>
