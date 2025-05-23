@@ -1,19 +1,19 @@
-# Tiny & Mighty Reward Models: `j1-micro` & `j1-nano`
+# Tiny & Mighty Generalist Reward Models: `j1-micro` & `j1-nano`
 
 <p align="center">
 <img src="assets/j1.png" width="350">
 </p>
 
 
-`j1-micro` and `j1-nano` are tiny but mighty reward models finetuned off Qwen3 via a variant of [Self-Principled Critique Tuning](https://arxiv.org/abs/2504.02495). This is one particular approach to [scaling judge-time compute](https://github.com/haizelabs/verdict) that factors the reward modeling task into two steps:
+`j1-micro` and `j1-nano` are tiny but mighty reward models finetuned from Qwen3 via a variant of **Self-Principled Critique Tuning**, introduced by DeepSeek in [*Inference-Time Scaling for Generalist Reward Modeling*](https://arxiv.org/abs/2504.02495). This is one particular approach to [scaling judge-time compute](https://github.com/haizelabs/verdict) that factors the reward modeling task into two steps:
 
 1. Generate a set of query-specific principles (rubric) that can be used to evaluate a given sample
 2. Based on these principles, generate rationales ("critiques") to produce a final pointwise numeric rating (reward)
 
 
-Our `j1` models are trained exclusively on the Skywork v2.0 dataset for the pairwise preference modeling task. They perform outstandingly well on this task, matching or beating the performance of order-of-magnitude larger models, as measured by RewardBench (see [Results](#results)). This is achieved *purely* via RL.
+Our `j1` models are trained exclusively on the Skywork v2.0 dataset for the pairwise preference modeling task. They perform outstandingly well on this task, matching or beating the performance of order-of-magnitude larger models, as measured by RewardBench (see [Results](#results)). This is achieved *purely* via RL, which rewards emergent instance-specific rubric creation.
 
-`j1-micro` and `j1-nano` were each trained in <1 day on a single A100 GPU. They are *only* 1.7B and 0.6B parameters, respectively.
+`j1-micro` and `j1-nano` were each trained in <1 day on a single 80GB A100 GPU with LoRA. They are *only* 1.7B and 0.6B parameters, respectively.
 
 ## Results
 
@@ -43,7 +43,7 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 ## Emergent Instance-Specific Rubric Creation
 
 > [!IMPORTANT]  
-> One critical upshot of Self-Principled Critique Tuning is that it induces Judge models to propose instance-specific rubrics. This enables more tailored, relevant scoring -- unlike ostensibly one-size-fits-all evaluator models.
+> One critical upshot of Self-Principled Critique Tuning is that it induces Judge models to propose instance-specific rubrics. This enables more tailored, relevant scoring — unlike ostensibly one-size-fits-all evaluator models.
 
 To illustrate this, consider the following example from RewardBench:
 
@@ -125,3 +125,14 @@ Response A fully adheres to the instruction, provides the correct MLA citation w
 As you can tell, the generated criteria (see `<specific_criteria>` section) and critiques from `j1-micro` are far more relevant and tailored to the idiosyncrasies of the specific input & response pair vs. the rubric and critiques from Qwen3-1.7B.
 
 More examples can be found in `results/`.
+
+## Citation
+```bibtex
+@misc{j1micro2025,
+    title = {j1: Tiny Generalist Reward Models via Inference-Time Rubric Proposal},
+    author = {Haize Labs},
+    url = {https://github.com/haizelabs/j1-micro},
+    month = {May},
+    year = {2025}
+}
+```
