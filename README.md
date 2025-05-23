@@ -1,8 +1,8 @@
-# Tiny & Mighty Generalist Reward Models: `j1-micro` & `j1-nano`
-
 <p align="center">
 <img src="assets/j1.png" width="350">
 </p>
+
+# Tiny & Mighty Reward Models: `j1-micro` & `j1-nano`
 
 
 `j1-micro` and `j1-nano` are tiny but mighty reward models finetuned from Qwen3 via a variant of **Self-Principled Critique Tuning**, introduced by DeepSeek in [*Inference-Time Scaling for Generalist Reward Modeling*](https://arxiv.org/abs/2504.02495). This is one particular approach to [scaling judge-time compute](https://github.com/haizelabs/verdict) that factors the reward modeling task into two steps:
