@@ -1,8 +1,7 @@
-# Tiny But Mighty Reward (Judge) Models: `j1-micro` & `j1-nano`
+# Tiny & Mighty Reward Models: `j1-micro` & `j1-nano`
 
-<br>
 <p align="center">
-<img src="assets/j1.png" width="400">
+<img src="assets/j1.png" width="350">
 </p>
 
 
@@ -21,6 +20,7 @@ Our `j1` models are trained exclusively on the Skywork v2.0 dataset for the pair
 We report performance on RewardBench, the gold standard for measuring reward models.
 
 <div align="center">
+
 | Model | RewardBench Score |
 |-------|:-------------:|
 | Qwen3-1.7B | 29.51% |
@@ -30,8 +30,8 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 | GPT-4o-mini-2024-07-18 | 80.10% |
 | Llama-3-70B-Instruct | 77.00% |
 | **j1-micro** | **80.70%** |
+
 </div>
-<br>
 
 ### Training Progress
 <br>
