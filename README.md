@@ -23,13 +23,13 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 
 | Model | RewardBench Score |
 |-------|:-------------:|
-| Tulu-2-70b | 77.20% |
 | Claude-3-Opus-20240229 | 80.10% |
 | GPT-4o-mini-2024-07-18 | 80.10% |
+| Tulu-2-70b | 77.20% |
 | Llama-3-70B-Instruct | 77.00% |
 | Qwen3-1.7B | 29.51% |
 | Qwen3-1.7B (Soft Match) | 69.38% |
-| **j1-micro** | **80.70%** |
+| **j1-micro** (1.7B) | **80.70%** |
 
 <em>Table 1: RewardBench scores for `j1-micro` (1.7B). `j1-micro` is competitive with models several orders of magnitude larger.</em>
 
@@ -42,13 +42,13 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 
 | Model | RewardBench Score |
 |-------|:-------------:|
-| allenai/tulu-v2.5-13b-uf-rm | 46.1% |
-| ContextualAI/archangel_sft-dpo_llama30b | 56.10% |
-| Qwen/Qwen1.5-4B-Chat | 56.00% |
 | GPT-3.5-turbo-0125 | 65.30% |
+| ContextualAI/archangel_sft-dpo_llama30b | 56.10% |
+| allenai/tulu-v2.5-13b-uf-rm | 46.1% |
+| Qwen/Qwen1.5-4B-Chat | 56.00% |
 | Qwen3-0.6B | 0% |
 | Qwen3-0.6B (Soft Match) | 0% |
-| **j1-nano** | **62.35%** |
+| **j1-nano** (0.6B) | **62.35%** |
 
 <em>Table 2: RewardBench scores for `j1-nano` (0.6B). To our knowledge, `j1-nano` is by far the smallest model to achieve >60% accuracy on RewardBench.</em>
 
