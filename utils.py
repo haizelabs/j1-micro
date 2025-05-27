@@ -7,7 +7,8 @@ from random import random
 
 
 def judge_system_prompt() -> str:
-    return textwrap.dedent("""
+    return textwrap.dedent(
+        """
     You are an expert XML wrangler. You must respond in the following format, regardless of the input:
     
     <specific_criteria>
@@ -21,17 +22,12 @@ def judge_system_prompt() -> str:
     </scores>
 
     Please only respond in English.
-    """).strip()
-
-
-def judge_prompt_format(
-    conversation_context_query: str, response_a: str, response_b: str
-) -> str:
     """
-    See page 40 of https://arxiv.org/abs/2504.02495
-    """
+    ).strip()
 
-    judge_prompt = textwrap.dedent("""
+
+judge_prompt_template = textwrap.dedent(
+    """
     You are a skilled little expert at scoring responses. You should evaluate given responses based on the given judging criteria.
     Given the context of the conversation (the last round is the User's query) and multiple responses from the Assistant, you need to refer to the [General Evaluation Criteria] to score the responses. Based on the general evaluation criteria, state potential other specific criteria to the query, the weights of different criteria, and then provide an overall comprehensive score upon them.
     Each score is an integer between 1 and 10, with a higher score indicating that the response meets the relevant criteria more closely. For example, a score of 1 means the response does not meet the criteria at all, a score of 6 means the response meets only some parts, and a score of 10 means the response perfectly meets the evaluation criteria.
@@ -84,9 +80,18 @@ def judge_prompt_format(
     <scores>
     [The overall comprehensive score of all responses in order, separate by comma in the boxed, e.g., \\boxed{{x, x}} if there exists 2 responses.]
     </scores>
-    """).strip()
+    """
+).strip()
 
-    return judge_prompt.format(
+
+def judge_prompt_format(
+    conversation_context_query: str, response_a: str, response_b: str
+) -> str:
+    """
+    See page 40 of https://arxiv.org/abs/2504.02495
+    """
+
+    return judge_prompt_template.format(
         conversation_context_query=conversation_context_query,
         response_a=response_a,
         response_b=response_b,
@@ -154,7 +159,9 @@ def get_skywork_dataset(
     ), f"Invalid `file_name` argument: {file_name}. Expected a .csv file."
 
     if os.path.exists(file_name):
-        assert split in file_name, f"Invalid split `{split}` for file_name: `{file_name}`"
+        assert (
+            split in file_name
+        ), f"Invalid split `{split}` for file_name: `{file_name}`"
         df = pd.read_csv(file_name)
 
     else:

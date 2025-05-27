@@ -126,6 +126,28 @@ As you can tell, the generated criteria (see `<specific_criteria>` section) and 
 
 More examples can be found in `results/`.
 
+## Reproducing RewardBench Results
+
+First, download the LoRA weights for [j1-nano](https://huggingface.co/haizelabs/j1-nano) and [j1-micro](https://huggingface.co/haizelabs/j1-micro).
+
+Spin up a local vLLM server:
+
+```bash
+vllm serve Qwen/Qwen3-0.6B --enable-lora --lora-modules j1-nano=[path-to-snapshot]
+```
+
+```bash
+vllm serve Qwen/Qwen3-1.7B --enable-lora --lora-modules j1-micro=[path-to-snapshot]
+```
+
+Finally, run the test script:
+
+```bash
+python test_j1.py --model-name {j1-nano, j1-micro}
+```
+
+Results will be saved to `results/j1_rewardbench.csv` by default.
+
 ## Citation
 ```bibtex
 @misc{j1micro2025,
