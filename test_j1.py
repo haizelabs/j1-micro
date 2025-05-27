@@ -118,7 +118,7 @@ def main(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--api-base", type=str, default="https://v1-judge-2.haizelabs.com/v1"
+        "--api-base", type=str, default="http://localhost:8000/v1"
     )
     parser.add_argument("--model-name", type=str, default="j1-micro")
     parser.add_argument("--output-file", type=str, default="results/j1_rewardbench.csv")

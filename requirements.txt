@@ -14,3 +14,4 @@ scipy==1.15.2
 vllm==0.7.2
 flash-attn==2.7.0.post2
 wandb==0.19.7
+verdict==0.2.3
