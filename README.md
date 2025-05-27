@@ -58,7 +58,7 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 ### Training Progress
 <br>
 <p align="center">
-<img src="assets/curves.png" width="550">
+<img src="assets/reward.png">
 </p>
 
 
@@ -155,7 +155,7 @@ More examples can be found in `results/`.
 
 ## Reproducing RewardBench Results
 
-First, download the LoRA weights for [j1-nano](https://huggingface.co/haizelabs/j1-nano) and [j1-micro](https://huggingface.co/haizelabs/j1-micro).
+First, download the LoRA weights for [j1-nano](https://huggingface.co/haizelabs/j1-nano-0.6B) and [j1-micro](https://huggingface.co/haizelabs/j1-micro-1.7B).
 
 Spin up a local vLLM server:
 
