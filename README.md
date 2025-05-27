@@ -57,7 +57,7 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 ### Training Progress
 <br>
 <p align="center">
-<img src="assets/curves.png" width="1000">
+<img src="assets/curves.png" width="550">
 </p>
 
 
