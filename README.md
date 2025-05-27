@@ -23,13 +23,34 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 
 | Model | RewardBench Score |
 |-------|:-------------:|
-| Qwen3-1.7B | 29.51% |
-| Qwen3-1.7B (Soft Match) | 69.38% |
 | Tulu-2-70b | 77.20% |
 | Claude-3-Opus-20240229 | 80.10% |
 | GPT-4o-mini-2024-07-18 | 80.10% |
 | Llama-3-70B-Instruct | 77.00% |
+| Qwen3-1.7B | 29.51% |
+| Qwen3-1.7B (Soft Match) | 69.38% |
 | **j1-micro** | **80.70%** |
+
+<em>Table 1: RewardBench scores for `j1-micro` (1.7B). `j1-micro` is competitive with models several orders of magnitude larger.</em>
+
+</div>
+
+<br>
+<br>
+
+<div align="center">
+
+| Model | RewardBench Score |
+|-------|:-------------:|
+| allenai/tulu-v2.5-13b-uf-rm | 46.1% |
+| ContextualAI/archangel_sft-dpo_llama30b | 56.10% |
+| Qwen/Qwen1.5-4B-Chat | 56.00% |
+| GPT-3.5-turbo-0125 | 65.30% |
+| Qwen3-0.6B | 0% |
+| Qwen3-0.6B (Soft Match) | 0% |
+| **j1-nano** | **62.35%** |
+
+<em>Table 2: RewardBench scores for `j1-nano` (0.6B). To our knowledge, `j1-nano` is by far the smallest model to achieve >60% accuracy on RewardBench.</em>
 
 </div>
 
@@ -38,6 +59,11 @@ We report performance on RewardBench, the gold standard for measuring reward mod
 <p align="center">
 <img src="assets/curves.png" width="1000">
 </p>
+
+
+## Output Format
+
+`j1-micro` and `j1-nano` output `specific_criteria` unique to the (pairwise) data being evaluated, `analysis` of the data with respect to `specific_criteria`, and finally a pair of `scores` in `\boxed{x,y}` ultimately indicating response preference.
 
 
 ## Emergent Instance-Specific Rubric Creation
@@ -140,7 +166,7 @@ vllm serve Qwen/Qwen3-0.6B --enable-lora --lora-modules j1-nano=[path-to-snapsho
 vllm serve Qwen/Qwen3-1.7B --enable-lora --lora-modules j1-micro=[path-to-snapshot]
 ```
 
-Finally, run the test script:
+Run the test script, powered by [Verdict](https://github.com/haizelabs/verdict):
 
 ```bash
 python test_j1.py --model-name {j1-nano, j1-micro}
@@ -151,7 +177,7 @@ Results will be saved to `results/j1_rewardbench.csv` by default.
 ## Citation
 ```bibtex
 @misc{j1micro2025,
-    title = {j1: Tiny Generalist Reward Models via Inference-Time Rubric Proposal},
+    title = {j1-micro and j1-nano: Tiny Generalist Reward Models via Inference-Time Rubric Proposal},
     author = {Haize Labs},
     url = {https://github.com/haizelabs/j1-micro},
     month = {May},
