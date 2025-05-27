@@ -1,6 +1,8 @@
-<p align="center">
+<div align="center">
 <img src="assets/j1.png" width="350">
-</p>
+
+🤗 **[`j1-micro` (1.7B)](https://huggingface.co/haizelabs/j1-micro-1.7B) | [`j1-nano` (0.6B)](https://huggingface.co/haizelabs/j1-nano-0.6B)** 🤗
+</div>
 
 # Tiny & Mighty Reward Models: `j1-micro` & `j1-nano`
 
