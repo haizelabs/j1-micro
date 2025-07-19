@@ -12,7 +12,7 @@
 2. Based on these principles, generate rationales ("critiques") to produce a final pointwise numeric rating (reward)
 
 
-Our `j1` models are trained exclusively on the Skywork v2.0 dataset for the pairwise preference modeling task. They perform outstandingly well on this task, matching or beating the performance of order-of-magnitude larger models, as measured by RewardBench (see [Results](#results)). This is achieved *purely* via RL, which rewards emergent instance-specific rubric creation.
+Our `j1` models are trained exclusively on the [Skywork/Skywork-Reward-Preference-80K-v0.2](https://huggingface.co/datasets/Skywork/Skywork-Reward-Preference-80K-v0.2) dataset (no RewardBench contamination) for the pairwise preference modeling task. They perform outstandingly well on this task, matching or beating the performance of order-of-magnitude larger models, as measured by RewardBench (see [Results](#results)). This is achieved *purely* via RL, which rewards emergent instance-specific rubric creation.
 
 `j1-micro` and `j1-nano` were each trained in <1 day on a single 80GB A100 GPU with LoRA. They are *only* 1.7B and 0.6B parameters, respectively.
 
